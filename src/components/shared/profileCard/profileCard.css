@@ -1,0 +1,40 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.image-section {
+  flex: 1;
+}
+
+.profile-image {
+  width: 570px;
+  height: auto;
+  padding: 30px;
+
+}
+
+.text-section {
+  flex: 2;
+}
+
+.icon {
+  font-size: 24px;
+  color: #888;
+  margin-right: 10px;
+}
+
+h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
+}

@@ -1,0 +1,37 @@
+.footer{
+    background-color: #7454a9;
+    margin-top: 60px;
+    min-height: 300px;
+    width: 100%;
+    padding-top: 80px;
+    color: #fff;
+}
+.title .underline-line{
+    color: white;
+    margin-bottom: 30px;
+}
+.last{
+    color: #fff;
+}
+.bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.bottom-nav{
+    display: flex;
+    gap: 10px;
+}
+.bottom-nav .dot{
+    height: 6px;
+    width: 6px;
+    border-radius: 100px;
+    margin-top: 10px;
+    background-color: #b8a0df;
+}
+
+@media (min-width: 992px) {
+    .col-lg-4 {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+    }
+}

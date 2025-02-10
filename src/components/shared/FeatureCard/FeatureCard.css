@@ -1,0 +1,52 @@
+
+.details {
+   
+  display: flex;
+}
+
+.details-container {
+  margin-top: 120px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+}
+
+.feature-card {
+  width: 100%;
+  max-width: 25%;
+  padding: 24px;
+  box-shadow: 1px 1px 29px -13px rgba(185,171,196,1);
+
+  text-align: center;
+  background-color: #ffffff;
+}
+
+ .icon {
+  font-size: 32px;
+  color: #333;
+}
+.text-section i{
+  background-color: #9333ea;
+  color: white;
+  border-radius: 100px;
+  font-size: 1.rem;
+ 
+  
+}
+
+.feature-title {
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #9333ea;
+}
+.how-it-works-content{
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.feature-text {
+  margin-top: 8px;
+  color: #4b5563;
+}

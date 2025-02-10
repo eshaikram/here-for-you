@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+}
+
+
+
+  .login-page {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    height: 500px;
+   
+    background-image: url("https://alwayshere.fra1.digitaloceanspaces.com/alwayshere-1720616663522-HomePageBannerBackground.fw.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat
+
+  }
+
+  .login-container {
+    display: flex;
+    width: 40%;
+    height: 430px;
+    background-color: white;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-right: 100px;
+    margin-bottom: 50px;
+  }
+ 
+  .login-form {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    align-items: center;
+  }
+  
+  .login-form h1 {
+    color: #744ea9;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+  }
+  
+
+  .forgot-password-link {
+    font-size: 12px;
+    color: #744ea9;
+    text-align: right;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin-left: 80px;
+  }
+  
+  
+  .login-button {
+    width: 100%;
+
+    padding: 14px;
+    background-color: #744ea9;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .login-button:hover {
+    background-color: #5b3a8c;
+  }
+  
+
+  .text{
+    font-size: 14px;
+    color: #744ea9;
+    text-decoration: none;
+    padding-top: 20px;
+    justify-content: center;
+    margin: auto;
+  }
+  

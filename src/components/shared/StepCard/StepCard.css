@@ -1,0 +1,102 @@
+.how-it-works-container {
+  margin-top: 4rem;
+  margin-bottom: 40px;
+}
+.how-it-works-container h2{
+  text-align: center;
+  font-family: Spectral, serif;
+  margin-bottom: 60px;
+}
+
+.how-it-works-cards {
+
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  /* max-width: 1024px; */
+  margin: 0 auto;
+  padding: 1rem 1rem;
+}
+
+.how-it-works-card {
+  cursor: pointer;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 29px -13px rgb(172, 153, 186);
+  text-align: center;
+  padding: 10px 30px;
+  flex: 1; /* Equal width for all cards */
+ 
+  
+  transition: transform 0.3s ease-in-out; /* Hover effect */
+}
+.how-it-works-card h3 {
+  font-size: 20px !important;
+  transition: color 0.3s ease;
+}
+
+.how-it-works-card i {
+  font-size: 18px;
+  color: #4a5568; /* Default icon color */
+  transition: color 0.3s ease;
+}
+
+.how-it-works-card.active h3 {
+  color: #9333ea; /* Change text color when active */
+}
+
+.how-it-works-card.active i {
+  color: #9333ea; /* Change icon color when active */
+}
+
+.how-it-works-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.image-section{
+  padding: 30px;
+}
+
+.image-section img {
+  width: 570px;
+  height: 400px;
+}
+
+.text-section {
+  padding: 1rem;
+}
+
+.text-section h3 {
+  font-size: 36px;
+    font-weight: 300;
+    color:  #9333ea;
+    margin-bottom: 20px;
+
+}
+
+.text-section p {
+  font-size: 1rem;
+  color: #4a5568;
+}
+#icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  background-color: #9333ea; /* Circle background color */
+  border-radius: 50%; /* Makes it circular */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  margin-bottom: 20px;
+}
+
+#icon i {
+  font-size: 24px; /* Adjust icon size */
+  color: #ffffff; /* Icon color */
+}

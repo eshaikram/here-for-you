@@ -1,0 +1,51 @@
+.more-features-section {
+    padding: 120px 0;
+    background-color: rgb(164, 131, 217);
+    text-align: center;
+  }
+  
+  .lg-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .center-heading .heading {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .center-heading .under-line {
+    width: 80px;
+    height: 2px;
+    margin: 0 auto 20px;
+    background-color: white !important;
+  }
+  
+  .features-card {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;  
+    min-width: 250px;
+  }
+  
+  .list-item i {
+    color: rgb(164, 131, 217);
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .list-item span {
+    font-size: 14px;
+    color: #333;
+  }
+  

@@ -1,0 +1,66 @@
+.hero-section {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    height: 500px;
+    background-image: url("https://alwayshere.fra1.digitaloceanspaces.com/alwayshere-1720616663522-HomePageBannerBackground.fw.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 0 20px;
+  }
+  
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .hero-content {
+    text-align: left;
+    max-width: 600px;
+    color: #ffffff;
+    z-index: 2;
+    margin-right: 20px; 
+  }
+  
+  .hero-content h6 {
+    font-size: 16px;
+    color: #ad81e6;
+    margin-bottom: 10px;
+  }
+  
+  .hero-content h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #7454a9;;
+  }
+  
+  .hero-content p {
+    max-width: 500px;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #737373
+  }
+  
+  .hero-button {
+    background-color: #7454a9;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .hero-button:hover {
+    background-color: #5b3c8a;
+  }
