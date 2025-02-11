@@ -5,27 +5,78 @@ import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import "./design.css";
 import PageSettings from "../sidebar/page";
+import axios from "axios";
 
 export default function Page() {
   const editorRef = useRef(null);
   const quillInstance = useRef(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [folders, setFolders] = useState([]);
+  const [newFolderName, setNewFolderName] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  useEffect(() => {
-    if (editorRef.current && !quillInstance.current) {
-      quillInstance.current = new Quill(editorRef.current, {
-        theme: "snow",
-        modules: {
-          toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ["bold", "italic", "underline"],
-            [{ list: "ordered" }, { list: "bullet" }],
-            ["link", "image"],
-          ],
-        },
-      });
+// Save folders to backend
+const saveToGallery = async (folders) => {
+  try {
+    await axios.post("/api/auth/getGallery", { folders });
+    console.log("Folders saved successfully!");
+  } catch (error) {
+    console.error("Error saving folders:", error);
+  }
+};
+
+// Load folders from backend on mount
+useEffect(() => {
+  const fetchFolders = async () => {
+    try {
+      const response = await axios.get("/api/auth/getGallery");
+      setFolders(response.data.folders || []);
+    } catch (error) {
+      console.error("Error fetching folders:", error);
     }
-  }, []);
+  };
+  fetchFolders();
+}, []);
+
+// Handle Image Upload
+const handleImageUpload = (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const imageUrl = URL.createObjectURL(file);
+    setSelectedImage(imageUrl);
+  }
+};
+
+// Add Folder with user input
+const addFolder = () => {
+  if (newFolderName.trim()) {
+    setFolders((prevFolders) => {
+      const updatedFolders = [...prevFolders, newFolderName];
+      saveToGallery(updatedFolders);
+      return updatedFolders;
+    });
+    setNewFolderName(""); // Reset input field
+  }
+};
+
+
+
+useEffect(() => {
+  if (editorRef.current && !quillInstance.current) {
+    quillInstance.current = new Quill(editorRef.current, {
+      theme: "snow",
+      modules: {
+        toolbar: [
+          [{ header: [1, 2, 3, false] }],
+          ["bold", "italic", "underline"],
+          [{ list: "ordered" }, { list: "bullet" }],
+          ["link", "image"],
+        ],
+      },
+    });
+  }
+}, []);
+
   return (
     <div className="pagedesign">
       <div className="my-layout">
@@ -43,7 +94,7 @@ export default function Page() {
         </div>
       </div>
 
-    
+
       <div className="user-header-edit">
         <div className="profile-section">
           <div className="profile">
@@ -188,6 +239,9 @@ export default function Page() {
       <button className="addmore">
         <i className="fa-solid fa-plus"></i>Add More Timeline
       </button>
+
+
+
       <div className="gallery">
         <input
           className="galleries-input"
@@ -202,14 +256,55 @@ export default function Page() {
         <button className="btn1">
           <i className="fa-solid fa-folder"></i>All
         </button>
-        <button className="btn2">
-      
-          <i className="fa-solid fa-plus"></i>Add Folders
+        <button className="btn2" onClick={() => setFolders([...folders, ""])}>
+          <i className="fa-solid fa-plus"></i>Add Folder
         </button>
       </div>
-      <button className="photo">
+
+      {folders.map((folder, index) => (
+        <div key={index} className="folder-container">
+          <input
+            className="folder-input"
+            type="text"
+            value={folder}
+            onChange={(e) => {
+              const updatedFolders = [...folders];
+              updatedFolders[index] = e.target.value;
+              setFolders(updatedFolders);
+            }}
+            placeholder="New Folder"
+          />
+          <button
+            className="delete-folder"
+            onClick={() => {
+              setFolders(folders.filter((_, i) => i !== index));
+            }}
+          >
+            <i className="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      ))}
+
+      <input
+        type="file"
+        accept="image/*"
+        style={{ display: "none" }}
+        id="imageInput"
+        onChange={handleImageUpload}
+      />
+
+      <button className="photo" onClick={() => document.getElementById("imageInput").click()}>
         <i className="fa-solid fa-film"></i>Add A Photo
       </button>
+
+    
+      {selectedImage && (
+        <div className="image-preview">
+          <img src={selectedImage} alt="Selected" />
+        </div>
+      )}
+
+
       <div className="family">
         <input
           className="families-input"

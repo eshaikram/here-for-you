@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./sidebar.css";
 
-export default  function PageSettings ({ isOpen, onClose }){
+export default function PageSettings({ isOpen, onClose }) {
   const [sections, setSections] = useState([
     "My Story",
     "Favorites",
@@ -29,6 +29,23 @@ export default  function PageSettings ({ isOpen, onClose }){
     setVisibleSection(visibleSection === section ? null : section);
   };
 
+  const handleDragStart = (e, index) => {
+    e.dataTransfer.setData("index", index);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e, dropIndex) => {
+    e.preventDefault();
+    const dragIndex = e.dataTransfer.getData("index");
+    const newSections = [...sections];
+    const [draggedItem] = newSections.splice(dragIndex, 1);
+    newSections.splice(dropIndex, 0, draggedItem);
+    setSections(newSections);
+  };
+
   return (
     <div className={`offcanvas offcanvas-start ${isOpen ? "show" : "hide"}`} tabIndex="-1">
       <div className="offcanvas-header">
@@ -36,7 +53,6 @@ export default  function PageSettings ({ isOpen, onClose }){
           <h2>Page configurations</h2>
           <div className="viewline"></div>
         </div>
-  
         <button type="button" className="btn-close" aria-label="Close" onClick={onClose}></button>
       </div>
       <div className="offcanvas-body">
@@ -45,16 +61,21 @@ export default  function PageSettings ({ isOpen, onClose }){
             <div className="accordion">
               <div className="accordion-item">
                 <h2 className="accordion-header">
-                  <button className="accordion-button" onClick={() => toggleSection("reorder")}>
-                    Re-order sections
-                  </button>
+                  <button className="accordion-button" onClick={() => toggleSection("reorder")}>Re-order sections</button>
                 </h2>
                 <div className={`accordion-body ${visibleSection === "reorder" ? "show" : "hide"}`}>
-                  <p>Re-order the different sections of the page:</p>
+                  <p>Drag and drop to reorder sections:</p>
                   <div className="change-orders">
                     <div className="list-group">
                       {sections.map((item, index) => (
-                        <div key={index} className="list-item" draggable="true">
+                        <div
+                          key={index}
+                          className="list-item"
+                          draggable="true"
+                          onDragStart={(e) => handleDragStart(e, index)}
+                          onDragOver={handleDragOver}
+                          onDrop={(e) => handleDrop(e, index)}
+                        >
                           {item}
                         </div>
                       ))}
@@ -63,21 +84,11 @@ export default  function PageSettings ({ isOpen, onClose }){
                 </div>
               </div>
 
- 
               <div className="accordion-item">
                 <h2 className="accordion-header">
-                  <button
-                    className="accordion-button"
-                    onClick={() => toggleSection("pageColor")}
-                  >
-                    Page color
-                  </button>
+                  <button className="accordion-button" onClick={() => toggleSection("pageColor")}>Page color</button>
                 </h2>
-                <div
-                  className={`accordion-body ${
-                    visibleSection === "pageColor" ? "show" : "hide"
-                  }`}
-                >
+                <div className={`accordion-body ${visibleSection === "pageColor" ? "show" : "hide"}`}>
                   <div className="color-pallets">
                     {randomColors.map((color, index) => (
                       <div
@@ -89,53 +100,12 @@ export default  function PageSettings ({ isOpen, onClose }){
                     ))}
                   </div>
                   <label className="color-picker">
-                    <input
-                      type="color"
-                      value={pageColor}
-                      onChange={(e) => setPageColor(e.target.value)}
-                    />
+                    <input type="color" value={pageColor} onChange={(e) => setPageColor(e.target.value)} />
                     <i className="fa-solid fa-palette"></i>
                   </label>
                 </div>
               </div>
 
-              {/* Background Color */}
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button
-                    className="accordion-button"
-                    onClick={() => toggleSection("bgColor")}
-                  >
-                    Background color
-                  </button>
-                </h2>
-                <div
-                  className={`accordion-body ${
-                    visibleSection === "bgColor" ? "show" : "hide"
-                  }`}
-                >
-                  <div className="color-pallets">
-                    {randomColors.map((color, index) => (
-                      <div
-                        key={index}
-                        className="pallet"
-                        style={{ backgroundColor: color }}
-                        onClick={() => setBgColor(color)}
-                      />
-                    ))}
-                  </div>
-                  <label className="color-picker">
-                    <input
-                      type="color"
-                      value={pageColor}
-                      onChange={(e) => setPageColor(e.target.value)}
-                    />
-                    <i className="fa-solid fa-palette"></i>
-                  </label>
-                </div>
-              </div>
-
-              {/* Text Color */}
               <div className="accordion-item">
                 <h2 className="accordion-header">
                   <button

@@ -357,6 +357,16 @@ i {
   width: 19%;
   font-size: 1.9rem;
 }
+.image-preview {
+  margin: 2rem 8rem;
+}
+
+.image-preview img {
+  max-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .lineeee {
   margin-top: -4rem;
   margin-left: 8rem;
@@ -366,6 +376,29 @@ i {
 .my-buttons {
   margin: 3rem 6rem;
 }
+.folder-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #f8a3b8;
+  padding: 8px;
+  margin: 10px 6rem;
+  width: fit-content;
+}
+
+.folder-input {
+  border: none;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.delete-folder {
+  background: none;
+  border: none;
+  color: #f8a3b8;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
 .btn1 {
   background: none;
   border: 1px solid #f8a3b8;

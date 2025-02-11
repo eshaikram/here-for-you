@@ -6,15 +6,15 @@ import "./HowItWorks.css";
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(null);
 
-  // Load activeStep from localStorage when the component mounts
+ 
   useEffect(() => {
     const storedStep = localStorage.getItem("activeStep");
     if (storedStep !== null) {
-      setActiveStep(parseInt(storedStep, 10)); // Convert to number
+      setActiveStep(parseInt(storedStep, 10)); 
     }
   }, []);
 
-  // Save activeStep to localStorage whenever it changes
+
   useEffect(() => {
     if (activeStep !== null) {
       localStorage.setItem("activeStep", activeStep);

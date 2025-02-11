@@ -1,0 +1,132 @@
+.page-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Hero Section */
+  .hero-wrapper {
+    position: relative;
+    width: 100%;
+    height: 720px;
+    overflow: hidden;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: grab;
+  }
+  
+
+  .profile-section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .avatar-box img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .profile-details h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .profile-details p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  .nav-tabs {
+    background: #f5f5f5;
+    padding: 10px 0;
+  }
+  
+  .navigation-bar {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    width: 100%;
+    padding: 1.5rem 6rem;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tab-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tab-link {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+  
+  .tab-link i {
+    margin-right: 8px;
+    color: #f8a3b8;
+  }
+  
+  /* Sections */
+  .container-fluid {
+    padding: 40px;
+  }
+  
+  .fav-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .filter-options {
+    margin-bottom: 20px;
+  }
+  
+  .filter-btn {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .memory-box {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .memory-box p {
+    font-size: 16px;
+  }
+  
+  .contribute-btn {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .timeline-list {
+    list-style-type: none;
+  }
+  
+  .divider {
+    width: 50px;
+    height: 4px;
+    background-color: #007bff;
+    margin-top: 5px;
+  }
+  
