@@ -1,0 +1,91 @@
+.row{
+  display: flex;
+  align-items: center;
+}
+.dash {
+    margin-top: 2rem;
+  }
+  
+  .dash h2 {
+    color: #a47ad8;
+    font-size: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .divider {
+    width: 50px;
+    margin-top: 0.5rem;
+    border: 1px solid #9971db;
+  }
+  
+  .description p {
+    color: rgb(87, 86, 86);
+    line-height: 1.5;
+    font-size: 1.3rem;
+    margin-top: 1.4rem;
+  }
+  
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: #9971db;
+    margin-top: 1rem;
+  }
+  .point {
+    display: flex;
+    color: rgb(87, 86, 86);
+    padding: 15px;
+  }
+  
+  
+  .point i {
+    font-size: 24px; 
+    margin-right: 10px; 
+  }
+  .reverse{
+    flex-direction: row-reverse;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .dash {
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  .dash h2 {
+    animation: slideInLeft 1.5s ease-out;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .description p {
+    animation: slideInUp 1.5s ease-out;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

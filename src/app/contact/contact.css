@@ -1,0 +1,123 @@
+
+  .faq-heading{
+    text-align: center;
+    margin-top: -2rem;
+  }
+  .faq-heading i{
+    background: none;
+    color: #8139d8;
+    font-size: 1.5rem;
+  }
+  .faq-heading p{
+    font-size: 1.2rem;
+    margin: 1rem auto;
+    width: 53%;
+  }
+  .contact-divider{
+    width: 100px;
+    border: 1px solid #7e7c7c;
+    margin: auto;
+  }
+.contact-us-section{
+    display: flex;
+    margin: 5rem 1.5rem;
+    gap: 10rem;
+}
+.contact-detail{
+    margin-top:2rem ;
+}
+.contact-detail h2{
+    color: #8139d8;
+    font-size: 2.7rem;
+}
+.contact-detail h3{
+    color: #8139d8;
+    margin-top: 1.2rem;
+    font-size: 1.5rem;
+
+}
+.contact-detail p{
+    color: #535353;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+.contact-card {
+    background: #fff;
+    padding: 40px;
+
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+
+  .contact-card form {
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  .contact-card .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .contact-card .col-lg-6 {
+    width: 41%;
+    margin: 0.8rem;
+  }
+  
+  .contact-card .col-lg-12 {
+    width: 90%;
+    margin-left: 1rem;
+  }
+  
+
+  .form-label {
+    font-size: 22px;
+    font-weight: 600;
+    color: #3e04bd;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 12px;
+    margin-top: 0.7rem;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #f8f6fb;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .form-control:focus {
+    border-color: #6a41c2;
+    outline: none;
+  }
+  
+
+  textarea.form-control {
+    resize: none;
+  }
+  
+  .btn-primary {
+    background: #6a41c2;
+    color: #fff;
+    padding: 1rem 1rem;
+    font-size: 18px;
+   
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+   
+  
+  }
+  
+  .btn-primary:hover {
+    background: #5633a6;
+  }
+  
+  

@@ -1,0 +1,50 @@
+.list-item {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .list-item .number {
+    background: #a47ad8;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    gap: 1rem;
+    font-size: 1rem;
+    margin-top: 7px;
+    margin-left: 30px;
+  }
+  .list-item p {
+    margin-left: 30px;
+    font-size: 1.3rem;
+    width: 600px;
+    color: rgb(87, 86, 86);
+    line-height: 1.8;
+  }
+  .share {
+    font-size: 1.3rem;
+    margin-left: 28px;
+    line-height: 1.5;
+    color: rgb(87, 86, 86);
+  }
+  .my-btn {
+    background-color: #564177;
+    color: white;
+    width: 150px;
+    margin-top: 30px;
+    margin-left: 30px !important;
+    border: none;
+    font-size: 1rem;
+    height: 40px;
+    font-weight: bold;
+  }
+  .my-btn::after {
+    content: "→";
+    font-size: 1.4rem;
+    margin-left: 8px;
+  }

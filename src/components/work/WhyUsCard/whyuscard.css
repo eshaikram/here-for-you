@@ -1,0 +1,70 @@
+.why-us-card {
+    background: rgb(240, 233, 221);
+    color: #000000;
+    gap: 20px;
+    align-items: center;
+    padding: 10px;
+    margin: 1rem;
+    box-shadow: 0 4px 10px rgba(231, 224, 224, 0.1);
+    display: flex;
+    height: 150px;
+    width: 390px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .why-us-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .icon-use {
+    margin-top: -4rem;
+    margin-left: 2rem;
+    font-size: 30px;
+    color: #9971db;
+  }
+  
+  .why-us-card .content {
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .why-us-card .content h3 {
+    font-size: 22px;
+    color: #a47ad8;
+    margin-top: -0.3rem;
+  }
+  
+  .why-us-card .content p {
+    font-size: 15px;
+    margin-top: 1rem;
+    line-height: 1.7;
+    color: rgb(87, 86, 86);
+  }
+  
+  @keyframes fadeInCard {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .why-us-card {
+    animation: fadeInCard 1.5s ease-in-out;
+  }
+  
+  .why-us-card:nth-child(4) {
+    animation: fadeInCard 1.5s ease-in-out 1s forwards;
+  }
+  
+  .why-us-card:nth-child(5) {
+    animation: fadeInCard 1.5s ease-in-out 1.5s forwards;
+  }
+  
+  .why-us-card:nth-child(6) {
+    animation: fadeInCard 1.5s ease-in-out 2s forwards;
+  }
+  
