@@ -287,7 +287,11 @@ export default function Page() {
 
           <div className="timeline-right">
             <input type="text" placeholder="Headline" className="timeline-headline" />
-            <input type="text" placeholder="Description" className="timeline-description" />
+            <div className="my-timliness">
+               <i className="fa-solid fa-location-dot"></i>
+              <input type="text" placeholder="Description" className="timeline-description"/>
+              </div>
+            
           </div>
 
           <button onClick={() => removeTimeline(timeline.id)} className="delete-timeline">

@@ -351,7 +351,7 @@ i {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: 2rem 8rem;
   position: relative;
-  width: 40%;
+  width: 30%
 }
 
 .input-wrapper {
@@ -359,7 +359,8 @@ i {
   align-items: center;
   border: 1px dashed #ccc;
   padding: 10px;
-  border-radius: 5px;
+  margin-left: 1.5rem;
+
 }
 
 .input-number {
@@ -381,7 +382,7 @@ i {
   width: 100%;
   border: 1px dashed #ccc;
   padding: 10px;
-  border-radius: 5px;
+
   margin-top: 5px;
   outline: none;
   font-size: 14px;
@@ -392,7 +393,7 @@ i {
 /* Delete button (Trash icon) */
 .delete-btn {
   position: absolute;
-  margin-top: -6rem;
+  margin-top: -5.5rem;
   right: 10px;
   border: none;
   background: none;
@@ -436,7 +437,6 @@ i {
   border: 1.5px solid #f8a3b8;
 }
 
-/* Timeline Box */
 .timeline-box {
   display: flex;
   align-items: center;
@@ -445,11 +445,12 @@ i {
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: 2rem 8rem;
-  width: 50%;
+  width: 42%;
   position: relative;
+  gap: 4rem;
+ 
 }
 
-/* Left Side (Year, Month, Day) */
 .timeline-left {
   display: flex;
   flex-direction: column;
@@ -469,13 +470,23 @@ i {
   display: flex;
   flex-direction: column;
   width: 100%;
+  color: #f8a3b8;
+}
+.my-timliness {
+  display: flex;
+  align-items: center; 
+  gap: 1rem;
+}
+.my-timliness i {
+ margin-left: 1rem;
+background-color: none;
 }
 
 .timeline-headline {
   border: 2px dashed #ccc;
   padding: 10px;
-  font-size: 1.2rem;
   color: #f8a3b8;
+  font-size: 1.2rem;
   font-weight: bold;
   background: none;
   width: 100%;
@@ -484,15 +495,15 @@ i {
 .timeline-description {
   border: 2px dashed #ccc;
   padding: 10px;
+  padding-left: 5px;
   font-size: 1rem;
   width: 100%;
   margin-top: 5px;
 }
 
-/* Delete Button */
 .delete-timeline {
   position: absolute;
-  margin-top: -6rem;
+  margin-top: -7.2em;
   right: 10px;
   border: none;
   background: none;
@@ -501,7 +512,6 @@ i {
   color: red !important;
 }
 
-/* Add More Button */
 .addmoretimeline {
   background-color: #f8a3b8;
   border: none;
@@ -511,7 +521,6 @@ i {
   font-size: 1.2rem;
   display: flex;
   align-items: center;
-  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -523,18 +532,20 @@ i {
   border: 1px solid #ccc;
   padding: 10px;
   font-size: 14px;
-  border-radius: 5px;
   background: #fff;
   color: #f8a3b8;
   cursor: pointer;
   width: 100px;
 }
 
-/* Ensuring all options are visible */
 .timeline-select option {
   color: #f8a3b8;
   font-size: 14px;
-  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+    padding: 10px;
 }
 
 
@@ -902,9 +913,9 @@ i {
   border: 1.5px solid #f8a3b8;
 }
 
-/* Toggle Switch */
 .toggle-switch {
-  position: relative;
+  position: absolute;
+  right: 200px;
   display: inline-block;
   width: 50px;
   height: 25px;
@@ -923,7 +934,7 @@ i {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #f8a3b8;
+  background-color: black;
   transition: 0.4s;
   border-radius: 34px;
 }
