@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./contact.css";
-import Main from "@/components/global/main/main";
+import Main from "@/components/globals/my-main/main";
 export default function Contact() {
   return (
     <div className="our-help">
@@ -14,8 +14,8 @@ export default function Contact() {
             
            
           </div>
-      <div class="faq-heading">
-        <i class="fa-solid fa-envelope-open"></i>
+      <div className="faq-heading">
+        <i className="fa-solid fa-envelope-open"></i>
 
         <p>
           If you need help using always-here or you would like more info about

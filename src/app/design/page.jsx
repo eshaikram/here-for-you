@@ -7,9 +7,42 @@ import "./design.css";
 import PageSettings from "../sidebar/page";
 
 export default function Page() {
+  const [inputs, setInputs] = useState([]);
+  const [timelines, setTimelines] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const editorRef = useRef(null);
   const quillInstance = useRef(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const addInputField = () => {
+    setInputs([...inputs, { id: Date.now(), question: "", response: "" }]);
+  };
+
+  const removeInputField = (id) => {
+    setInputs(inputs.filter((input) => input.id !== id));
+  };
+  const addTimeline = () => {
+    setTimelines([
+      ...timelines,
+      { id: Date.now(), year: "", month: "", day: "", headline: "", description: "" },
+    ]);
+  };
+
+  const removeTimeline = (id) => {
+    setTimelines(timelines.filter((item) => item.id !== id));
+  };
+
+  const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+  ];
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+
+  const openModal = () => {
+    console.log("Opening modal");
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     if (editorRef.current && !quillInstance.current) {
@@ -175,19 +208,99 @@ export default function Page() {
         <div style={{ height: "400px" }} ref={editorRef}></div>
       </div>
 
+      <div className="favorites-container">
       <div className="favs">
         <input
           className="fav-input"
           name="heading"
-          placeholder="favourites"
+          placeholder="Favorites"
           type="text"
-          defaultValue="Favourites"
+          defaultValue="Favorites"
         />
       </div>
       <hr className="lineee" />
-      <button className="addmore">
-        <i className="fa-solid fa-plus"></i>Add More Timeline
+
+      {inputs.map((input) => (
+        <div key={input.id} className="input-box">
+          <div className="input-wrapper">
+            <span className="input-number">66</span>
+            <input
+              type="text"
+              placeholder="What was {firstname}’s favorite ..... "
+              className="fav-question"
+            />
+          </div>
+          <textarea
+            placeholder="Your Response here"
+            className="fav-response"
+          ></textarea>
+          <button onClick={() => removeInputField(input.id)} className="delete-btn">
+          <i className="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      ))}
+
+      <button className="addmore" onClick={addInputField}>
+        <i className="fa-solid fa-plus"></i> Add More
       </button>
+    </div>
+    <div className="timeline-container">
+      <div className="time">
+        <input
+          className="time-input"
+          name="heading"
+          placeholder="Timeline"
+          type="text"
+          defaultValue="Timeline"
+        />
+      </div>
+      <hr className="lineee2" />
+
+      {timelines.map((timeline) => (
+        <div key={timeline.id} className="timeline-box">
+          <div className="timeline-left">
+            <select className="timeline-select">
+              <option>Year</option>
+              {years.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+            <select className="timeline-select">
+              <option>Month</option>
+              {months.map((month, index) => (
+                <option key={index} value={month}>
+                  {month}
+                </option>
+              ))}
+            </select>
+            <select className="timeline-select">
+              <option>Day</option>
+              {days.map((day) => (
+                <option key={day} value={day}>
+                  {day}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="timeline-right">
+            <input type="text" placeholder="Headline" className="timeline-headline" />
+            <input type="text" placeholder="Description" className="timeline-description" />
+          </div>
+
+          <button onClick={() => removeTimeline(timeline.id)} className="delete-timeline">
+          <i className="fa-solid fa-trash"></i>
+            
+          </button>
+        </div>
+      ))}
+
+      <button className="addmoretimeline" onClick={addTimeline}>
+        <i className="fa-solid fa-plus"></i> Add More Timeline
+      </button>
+    </div>
       <div className="gallery">
         <input
           className="galleries-input"
@@ -348,6 +461,7 @@ export default function Page() {
         </div>
       </div>
 
+      <div className="memory-container">
       <div className="Memory">
         <input
           className="memories-input"
@@ -362,20 +476,63 @@ export default function Page() {
         <p>
           To live in the hearts we leave behind is not to die.
           <br />
-          Please share your Photos and Memories about the beloved
+          Please share your Photos and Memories about the beloved.
         </p>
-        <button className="memory-button">Contribute</button>
+        <button className="memory-button" onClick={openModal}>
+          Contribute
+        </button>
       </div>
-      <div className="video">
-        <input
-          className="videos-input"
-          name="heading"
-          placeholder="video"
-          type="text"
-          defaultValue="Videos"
-        />
-      </div>
-      <hr className="lineeeeee" />
+
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <button className="close-button" onClick={() => setIsModalOpen(false)}>✖</button>
+            <h2 className="modal-title">Contribute</h2>
+
+            <div className="modal-body">
+              <div className="input-group">
+                <label>Your Name</label>
+                <input type="text" placeholder="Enter your name" />
+              </div>
+              <div className="input-group">
+                <label>Your Email</label>
+                <input type="email" placeholder="Enter your email" />
+              </div>
+              <div className="input-group">
+                <label>Your Message</label>
+                <textarea placeholder="Enter your message"></textarea>
+              </div>
+              <div className="input-group">
+                <label>Your Images</label>
+                <button className="add-image">Add Image →</button>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button className="close-modal" onClick={() => setIsModalOpen(false)}>Close</button>
+              <button className="submit-button">Submit</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+    <div className="video-container">
+  <div className="video">
+    <input
+      className="videos-input"
+      name="heading"
+      placeholder="video"
+      type="text"
+      defaultValue="Videos"
+    />
+    <label className="toggle-switch">
+      <input type="checkbox" />
+      <span className="slider"></span>
+    </label>
+  </div>
+</div>
+<hr className="lineeeeee" />
+
 
       <div className="made">
         <p>
