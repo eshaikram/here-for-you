@@ -8,58 +8,12 @@ import PageSettings from "../sidebar/page";
 import axios from "axios";
 
 export default function Page() {
+  const [inputs, setInputs] = useState([]);
+  const [timelines, setTimelines] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const editorRef = useRef(null);
   const quillInstance = useRef(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [folders, setFolders] = useState([]);
-  const [newFolderName, setNewFolderName] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
-
-// Save folders to backend
-const saveToGallery = async (folders) => {
-  try {
-    await axios.post("/api/auth/getGallery", { folders });
-    console.log("Folders saved successfully!");
-  } catch (error) {
-    console.error("Error saving folders:", error);
-  }
-};
-
-// Load folders from backend on mount
-useEffect(() => {
-  const fetchFolders = async () => {
-    try {
-      const response = await axios.get("/api/auth/getGallery");
-      setFolders(response.data.folders || []);
-    } catch (error) {
-      console.error("Error fetching folders:", error);
-    }
-  };
-  fetchFolders();
-}, []);
-
-// Handle Image Upload
-const handleImageUpload = (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    const imageUrl = URL.createObjectURL(file);
-    setSelectedImage(imageUrl);
-  }
-};
-
-// Add Folder with user input
-const addFolder = () => {
-  if (newFolderName.trim()) {
-    setFolders((prevFolders) => {
-      const updatedFolders = [...prevFolders, newFolderName];
-      saveToGallery(updatedFolders);
-      return updatedFolders;
-    });
-    setNewFolderName(""); // Reset input field
-  }
-};
-
-
 
 useEffect(() => {
   if (editorRef.current && !quillInstance.current) {
@@ -226,22 +180,102 @@ useEffect(() => {
         <div style={{ height: "400px" }} ref={editorRef}></div>
       </div>
 
+      <div className="favorites-container">
       <div className="favs">
         <input
           className="fav-input"
           name="heading"
-          placeholder="favourites"
+          placeholder="Favorites"
           type="text"
-          defaultValue="Favourites"
+          defaultValue="Favorites"
         />
       </div>
       <hr className="lineee" />
-      <button className="addmore">
-        <i className="fa-solid fa-plus"></i>Add More Timeline
+
+      {inputs.map((input) => (
+        <div key={input.id} className="input-box">
+          <div className="input-wrapper">
+            <span className="input-number">66</span>
+            <input
+              type="text"
+              placeholder="What was {firstname}’s favorite ..... "
+              className="fav-question"
+            />
+          </div>
+          <textarea
+            placeholder="Your Response here"
+            className="fav-response"
+          ></textarea>
+          <button onClick={() => removeInputField(input.id)} className="delete-btn">
+          <i className="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      ))}
+
+      <button className="addmore" onClick={addInputField}>
+        <i className="fa-solid fa-plus"></i> Add More
       </button>
+    </div>
+    <div className="timeline-container">
+      <div className="time">
+        <input
+          className="time-input"
+          name="heading"
+          placeholder="Timeline"
+          type="text"
+          defaultValue="Timeline"
+        />
+      </div>
+      <hr className="lineee2" />
 
+      {timelines.map((timeline) => (
+        <div key={timeline.id} className="timeline-box">
+          <div className="timeline-left">
+            <select className="timeline-select">
+              <option>Year</option>
+              {years.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+            <select className="timeline-select">
+              <option>Month</option>
+              {months.map((month, index) => (
+                <option key={index} value={month}>
+                  {month}
+                </option>
+              ))}
+            </select>
+            <select className="timeline-select">
+              <option>Day</option>
+              {days.map((day) => (
+                <option key={day} value={day}>
+                  {day}
+                </option>
+              ))}
+            </select>
+          </div>
 
+          <div className="timeline-right">
+            <input type="text" placeholder="Headline" className="timeline-headline" />
+            <div className="my-timliness">
+               <i className="fa-solid fa-location-dot"></i>
+              <input type="text" placeholder="Description" className="timeline-description"/>
+              </div>
+            
+          </div>
 
+          <button onClick={() => removeTimeline(timeline.id)} className="delete-timeline">
+          <i className="fa-solid fa-trash"></i>
+            
+          </button>
+        </div>
+      ))}
+
+      <button className="addmoretimeline" onClick={addTimeline}>
+        <i className="fa-solid fa-plus"></i> Add More Timeline
+      </button>
       <div className="gallery">
         <input
           className="galleries-input"
@@ -443,6 +477,7 @@ useEffect(() => {
         </div>
       </div>
 
+      <div className="memory-container">
       <div className="Memory">
         <input
           className="memories-input"
@@ -457,20 +492,63 @@ useEffect(() => {
         <p>
           To live in the hearts we leave behind is not to die.
           <br />
-          Please share your Photos and Memories about the beloved
+          Please share your Photos and Memories about the beloved.
         </p>
-        <button className="memory-button">Contribute</button>
+        <button className="memory-button" onClick={openModal}>
+          Contribute
+        </button>
       </div>
-      <div className="video">
-        <input
-          className="videos-input"
-          name="heading"
-          placeholder="video"
-          type="text"
-          defaultValue="Videos"
-        />
-      </div>
-      <hr className="lineeeeee" />
+
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <button className="close-button" onClick={() => setIsModalOpen(false)}>✖</button>
+            <h2 className="modal-title">Contribute</h2>
+
+            <div className="modal-body">
+              <div className="input-group">
+                <label>Your Name</label>
+                <input type="text" placeholder="Enter your name" />
+              </div>
+              <div className="input-group">
+                <label>Your Email</label>
+                <input type="email" placeholder="Enter your email" />
+              </div>
+              <div className="input-group">
+                <label>Your Message</label>
+                <textarea placeholder="Enter your message"></textarea>
+              </div>
+              <div className="input-group">
+                <label>Your Images</label>
+                <button className="add-image">Add Image →</button>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button className="close-modal" onClick={() => setIsModalOpen(false)}>Close</button>
+              <button className="submit-button">Submit</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+    <div className="video-container">
+  <div className="video">
+    <input
+      className="videos-input"
+      name="heading"
+      placeholder="video"
+      type="text"
+      defaultValue="Videos"
+    />
+    <label className="toggle-switch">
+      <input type="checkbox" />
+      <span className="slider"></span>
+    </label>
+  </div>
+</div>
+<hr className="lineeeeee" />
+
 
       <div className="made">
         <p>
