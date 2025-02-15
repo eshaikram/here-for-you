@@ -5,18 +5,18 @@
   position: relative;
 }
 
-.banner {
+.bannar {
   width: 100%;
   height: 100%;
   overflow: auto;
   position: relative;
 }
 
-.banner::-webkit-scrollbar {
+.bannar::-webkit-scrollbar {
   display: none;
 }
 
-.banner img {
+.bannar img {
   width: 100%;
   height: auto;
 }
@@ -103,7 +103,7 @@
 }
 
 .name-editor {
-  /* margin-left: 40px; */
+ 
   display: flex;
   gap: 15px;
   justify-content: center;
@@ -115,6 +115,8 @@
   font-size: 2.2rem;
   text-align: center;
   width: 160px;
+  background-color: transparent !important;
+
 }
 
 .dob-container {
@@ -163,11 +165,11 @@
 }
 
 .location-input {
+  background-color: transparent !important;
   padding: 15px;
   border-radius: 5px;
   width: 83%;
   border: 1px solid #ccc;
-  background: transparent;
   font-size: 16px;
 }
 
@@ -197,7 +199,7 @@ i {
   width: 100%;
   padding: 2rem 8rem;
   align-items: center;
-  background-color: white;
+  background: none;
   border: 1px solid transparent;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -227,14 +229,17 @@ i {
   border: 2px dashed #ccc;
   padding: 15px 10px;
   width: 19%;
+  background: none;
+  outline: none;
   font-size: 1.9rem;
 }
-.linee {
-  margin-top: -2rem;
+.design-line {
+  margin-top: -4rem;
   margin-left: 8rem;
   width: 100px;
-  border: 1.5px solid #f8a3b8;
+  border: 2.3px solid #ff92ae;
 }
+
 
 .editor-toolbar {
   display: flex;
@@ -330,18 +335,12 @@ i {
   padding: 15px 10px;
   width: 19%;
   font-size: 1.9rem;
- 
   text-transform: capitalize;
   background: none;
   outline: none;
 }
 
-.lineee {
-  margin-top: -4rem;
-  margin-left: 8rem;
-  width: 100px;
-  border: 1px solid #f8a3b8;
-}
+
 
 /* Styling for dynamically added input fields */
 .input-box {
@@ -428,14 +427,10 @@ i {
   padding: 15px 10px;
   width: 19%;
   font-size: 1.9rem;
+  background: none;
+  outline: none;
 }
 
-.lineee2 {
-  margin-top: -4rem;
-  margin-left: 8rem;
-  width: 100px;
-  border: 1.5px solid #f8a3b8;
-}
 
 .timeline-box {
   display: flex;
@@ -556,7 +551,10 @@ background-color: none;
   border: 2px dashed #ccc;
   padding: 15px 10px;
   width: 19%;
+  background: none;
+  outline: none;
   font-size: 1.9rem;
+  
 }
 .image-preview {
   margin: 2rem 8rem;
@@ -566,16 +564,6 @@ background-color: none;
   max-width: 200px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.lineeee {
-  margin-top: -4rem;
-  margin-left: 8rem;
-  width: 100px;
-  border: 1.5px solid #f8a3b8;
-}
-.my-buttons {
-  margin: 3rem 6rem;
 }
 .folder-container {
   display: flex;
@@ -600,6 +588,9 @@ background-color: none;
   margin-left: 5px;
 }
 
+.my-buttons {
+  margin: 3rem 6rem;
+}
 .btn1 {
   background: none;
   border: 1px solid #f8a3b8;
@@ -643,13 +634,11 @@ background-color: none;
   padding: 15px 10px;
   width: 19%;
   font-size: 1.9rem;
+  background: none;
+  outline: none;
+
 }
-.lineeeee {
-  margin-top: -4rem;
-  margin-left: 8rem;
-  width: 100px;
-  border: 1.5px solid #f8a3b8;
-}
+
 .familytree {
   /* width: 1540px !important; */
   transform: scale(0.7) translateX(-20%);
@@ -769,16 +758,13 @@ i {
 }
 .memories-input {
   border: 2px dashed #ccc;
+  background: none;
+  outline: none;
   padding: 15px 10px;
   width: 19%;
   font-size: 1.9rem;
 }
-.lineeeee {
-  margin-top: -4rem;
-  margin-left: 8rem;
-  width: 100px;
-  border: 1.5px solid #f8a3b8;
-}
+
 .memory-detail {
   display: flex;
   margin: 3rem 9rem;
@@ -936,23 +922,32 @@ i {
   border: 2px dashed #ccc;
   padding: 15px 10px;
   font-size: 1.9rem;
+  background: none;
   width: 75%;
+  outline: none;
 }
-
-.lineeeeee {
-  margin-top: -4rem;
-  margin-left: 8rem;
-  width: 100px;
-  border: 1.5px solid #f8a3b8;
+.addmorevideo {
+  background-color: #f8a3b8;
+  border: none;
+  outline: none;
+  padding: 1rem 3rem;
+  margin: 9rem 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .toggle-switch {
-  position: absolute;
-  right: 200px;
-  display: inline-block;
   width: 50px;
   height: 25px;
+  border-radius: 25px;
+  position:absolute;
+  right: 120px;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s;
 }
+
 
 .toggle-switch input {
   opacity: 0;
